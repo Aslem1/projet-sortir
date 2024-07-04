@@ -6,12 +6,14 @@ use App\Repository\ParticipantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: ParticipantRepository::class)]
+#[UniqueEntity(fields: ['mail'], message: 'Il existe déjà un compte avec ce mail')]
 class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -257,7 +259,6 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        // TODO: Implement getRoles() method.
         // si admin = true alors tableau avec role admin
         // Sinon role user
         return $this->administrateur ? ['ROLE_ADMIN'] : ['ROLE_USER'];
@@ -271,6 +272,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         // TODO: Implement getUserIdentifier() method.
-        return (string) $this->mail;
+        //return (string) $this->mail;
+        return $this->mail;
     }
 }

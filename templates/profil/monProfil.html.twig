@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} | My Profile
+{% endblock %}
+
+{% block body %}
+    <div class="profile-page">
+        <div class="profile-photo">
+            {# logique pour la photo ici #}
+        </div>
+        <div class="profile-info">
+            <h2>My Profile</h2>
+            {{ form_start(form) }}
+            {{ form_row(form.pseudo) }}
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.telephone) }}
+            {{ form_row(form.mail) }}
+            {{ form_row(form.motDePasse) }}
+            {{ form_row(form.campus) }}
+            <div class="form-buttons">
+                <button type="submit">Enregistrer</button>
+                <button type="submit">Annuler</button>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
