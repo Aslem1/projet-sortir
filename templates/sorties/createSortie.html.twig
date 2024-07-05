@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} | My Profile
+{% endblock %}
+
+{% block body %}
+  <div>
+      <div class="home-page">
+          <div class="infos-sorties">
+              <h2>Créer une sortie</h2>
+              {{ form_start(form) }}
+              {{ form_row(form.campus) }}
+              <div class="form-buttons">
+                  <button type="submit">Enregistrer</button>
+                  <button type="submit">Publier la sortie</button>
+                  <button type="submit">Annuler</button>
+              </div>
+              {{ form_end(form) }}
+          </div>
+      </div>
+  </div>
+{% endblock %}

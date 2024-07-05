@@ -1,7 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h2>Ceci est la page d'accueil !</h2>
+{% block title %}
+    {{ parent() }} | Accueil
 {% endblock %}
 
-{% block title %}{{ parent() }} | Home{% endblock %}
+{% block body %}
+    <div class="home-page">
+        <div class="infos-sorties">
+            <h2>Filtrer les sorties</h2>
+            {{ form_start(form) }}
+            {{ form_row(form.campus) }}
+            {{ form_end(form) }}
+
+            <div class="form-buttons">
+                <button type="submit">Rechercher</button>
+            </div>
+        </div>
+        <div>
+            TODO tableau
+        </div>
+        <div>
+            <a href="{{ path('app_sortie') }}" title="CreateSortie">Créer une sortie</a>
+        </div>
+    </div>
+{% endblock %}
